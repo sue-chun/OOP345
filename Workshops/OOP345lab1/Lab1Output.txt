@@ -1,0 +1,4 @@
+Command Line : C:\Users\Sue\Desktop\OOP345Lab1\Debug\OOP345Lab1.exe oop345 dps491 
+Maximum number of characters stored : 3
+0: oop
+1: dps
