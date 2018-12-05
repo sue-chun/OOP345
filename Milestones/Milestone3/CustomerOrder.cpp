@@ -137,8 +137,8 @@ void CustomerOrder::fillItem(Item& it, std::ostream& os) {
 void CustomerOrder::display(std::ostream & os) const {
 	os << m_name << " - " << m_product << std::endl;
 	for (size_t i = 0; i < m_cntItem; ++i) {
-		os << "[" << std::setfill('0') << std::setw(6) << m_lstItem[i]->m_serialNumber 
-			<< std::setfill(' ') << "] " << std::setw(CustomerOrder::m_widthField) << m_lstItem[i]->m_itemName
+		os << "[" << std::setfill('0') << std::setw(6) << std::right << m_lstItem[i]->m_serialNumber 
+			<< std::setfill(' ') << "] " << std::left << std::setw(CustomerOrder::m_widthField) << m_lstItem[i]->m_itemName
 			<< " - " << ((m_lstItem[i]->m_fillState) ? "FILLED" : "MISSING");
 		os << std::endl;
 	}

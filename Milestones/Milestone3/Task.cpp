@@ -24,9 +24,10 @@ bool Task::moveTask() {
 	if (m_orders.size() <= 0) {
 		return false;
 	}
-	else if (!m_orders.back().getOrderFillState()) {
+	else if (m_orders.back().getItemFillState(getName())) {
 		// true means all items filled, false otherwise
 		*m_pNextTask += (std::move(m_orders.back()));
+		m_orders.pop_back();
 		return true;
 	}
 	else
@@ -41,9 +42,13 @@ bool Task::getCompleted(CustomerOrder& ord) {
 	if (m_orders.size() <= 0)
 		return false;
 	else {
-		ord = std::move(m_orders.back());
-		m_orders.pop_back();
-		return true;
+		if (m_orders.back().getItemFillState(getName())) {
+			ord = std::move(m_orders.back());
+			m_orders.pop_back();
+			return true;
+		}
+		else
+			return false;
 	}
 }
 
